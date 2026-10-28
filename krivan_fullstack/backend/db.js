@@ -1,0 +1,444 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DB_FILE = path.join(__dirname, 'data', 'krivan_db.json');
+
+// Ensure data directory exists
+const dataDir = path.join(__dirname, 'data');
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
+// Initial Seed Data mirroring Django models and Krivan Products
+const initialData = {
+  company: {
+    name: "Krivan Industries Pvt. Ltd.",
+    tagline: "Nourishing Agriculture, Growing Tomorrow",
+    tagline_mr: "मातीचे पोषण. उद्याची समृद्धी.",
+    description: "Krivan Industries Pvt. Ltd. delivers flagship bio-available potash (Kaizen-K), organic manures, PROM, diatomite silicon, and chelated micronutrients.",
+    office_addresses: [
+      "Head Office: Plot No. 12, Agri-Tech Park, Pune - 411001, Maharashtra, India.",
+      "Regional Office: Shop No. 4, Market Yard, Nashik - 422001, Maharashtra, India."
+    ],
+    customer_care_numbers: ["+91 98765 43210", "+91 80000 12345"],
+    emails: ["info@krivanindustries.com", "support@krivanindustries.com"],
+    factory_addresses: [
+      "Manufacturing Plant: MIDC Industrial Area, Chakan, Pune, Maharashtra - 410501"
+    ],
+    social_media: [
+      { platform: "Facebook", icon: "bi bi-facebook", url: "https://facebook.com/krivanindustries" },
+      { platform: "Instagram", icon: "bi bi-instagram", url: "https://instagram.com/krivanindustries" },
+      { platform: "YouTube", icon: "bi bi-youtube", url: "https://youtube.com/@krivanindustries" },
+      { platform: "WhatsApp", icon: "bi bi-whatsapp", url: "https://wa.me/919876543210" }
+    ]
+  },
+  products: [
+    {
+      id: "kaizen-k",
+      slug: "kaizen-k",
+      brand_name: "KAIZEN - K",
+      category: "potash",
+      category_display: "Potash & Plant Boosters",
+      category_display_mr: "पोटॅश आणि वनस्पती वर्धक",
+      manufacturer: "Krivan Industries Pvt. Ltd.",
+      subtitle: "Potash Derived From Rhodophytes (Flagship Product)",
+      subtitle_mr: "र्होडोफाइट्सपासून मिळवलेले पोटॅश (प्रमुख उत्पादन)",
+      isFlagship: true,
+      packing: "48 Grams, 4 Grams",
+      target_crops: "Cash Crops, Vegetables, Fruit Crops, Legumes & Floriculture",
+      target_crops_mr: "रोख पिके, भाजीपाला, फळपिके, कडधान्ये व फुलशेती",
+      shortDesc: "Flagship bio-available potash derived from Rhodophytes enriched with natural minerals, auxins, and cytokinins to boost crop yield, sugar content, and drought resilience.",
+      shortDesc_mr: "नैसर्गिक खनिजे, ऑक्सिन्स आणि सायटोकायनिनने समृद्ध असलेले बायो-पोटॅश, जे पिकांचे उत्पादन, फळांमधील साखरेचे प्रमाण (Brix) आणि दुष्काळ प्रतिकारशक्ती वाढवते.",
+      main_picture: "/assets/images/products/kaizen-k.jpg",
+      youtube_link: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      composition: [
+        { label: "Water Soluble Potash (K)", value: "20.0% (Min)" },
+        { label: "Total Sulphur (S)", value: "1.5%" },
+        { label: "Moisture", value: "5.0% (Max)" },
+        { label: "Bio-Active Extracts", value: "Rich in Minerals, Auxins & Cytokinins" }
+      ],
+      benefits: [
+        "Contains bio-available potash which significantly improves vital plant functions.",
+        "Increases yield, weight, size, and quality of crop produce.",
+        "Helps activate growth-related enzymes and hormones naturally.",
+        "Improves crop resistance against severe drought and thermal stress.",
+        "Enhances root nutrient uptake efficiency across all growth stages.",
+        "Improves shape, uniform size, vibrant color, and rich flavor of produce.",
+        "Naturally rich in essential Minerals, Auxins, and Cytokinins."
+      ],
+      benefits_mr: [
+        "पिकाच्या आवश्यक शरीरक्रिया गतिमान करण्यास मदत करते.",
+        "उत्पादन, वजन, आकार आणि गुणवत्तेमध्ये लक्षणीय वाढ करते.",
+        "वाढीसाठी उपयुक्त विकर (enzymes) आणि हार्मोन्स नैसर्गिकरित्या सक्रिय करते.",
+        "दुष्काळ आणि तापमान बदलांविरुद्ध पिकाची प्रतिकारशक्ती वाढवते.",
+        "फळांचा आकर्षक रंग, चव आणि साखरेचे प्रमाण सुधारते."
+      ],
+      specification: "100% Water Soluble Rhodophytes Potash extract with neutral pH.",
+      usage: "Suitable for Cash crops, Horticulture, Vegetables, Legumes, Cereals, Tuber & Bulb crops.",
+      dosage: "Foliar Spray: 1 - 1.5 gm per litre of water. Drip: 250 - 500 gm per acre.",
+      application_method: "Foliar Spray & Drip Irrigation",
+      precautions: "Store in a cool, dry place away from direct sunlight. Keep out of reach of children.",
+      created_at: new Date().toISOString()
+    },
+    {
+      id: "thalassa",
+      slug: "thalassa",
+      brand_name: "THALASSA",
+      category: "potash",
+      category_display: "Potash & Plant Boosters",
+      category_display_mr: "पोटॅश आणि वनस्पती वर्धक",
+      manufacturer: "Krivan Industries Pvt. Ltd.",
+      subtitle: "Flower & Fruit Enhancer",
+      subtitle_mr: "फुल आणि फळ विकासक",
+      isFlagship: false,
+      packing: "1 Litre, 500 ml",
+      target_crops: "Grapes, Tomato, Pomegranate, Chili & Vegetables",
+      target_crops_mr: "द्राक्षे, टोमॅटो, डाळिंब, मिरची व सर्व भाजीपाला",
+      shortDesc: "Specialized liquid flower and fruit enhancer formulated to prevent flower drop, promote uniform fruit setting, and maximize berry/fruit size.",
+      shortDesc_mr: "फुलगळ रोखण्यासाठी, एकसमान फळधारणेसाठी आणि फळांचा दर्जा सुधारण्यासाठी विशेष समुद्री अर्क.",
+      main_picture: "/assets/images/results/grapes-yield.jpg",
+      youtube_link: "",
+      composition: [
+        { label: "Formulation", value: "Bio-Active Marine & Botanical Extract" },
+        { label: "Active Compounds", value: "Organic Auxins & Cytokinins" },
+        { label: "Target Stage", value: "Pre-flowering & Fruit Setting Stage" }
+      ],
+      benefits: [
+        "Prevents premature flower and fruit drop under adverse weather.",
+        "Promotes uniform, profuse flowering and fruit development.",
+        "Enhances fruit size, skin shine, sugar content (Brix), and color.",
+        "Significantly increases marketable crop yield and shelf life."
+      ],
+      benefits_mr: [
+        "प्रतिकूल हवामानात फुलगळ व फळगळ थांबवते.",
+        "फुलांची संख्या आणि एकसमान फळधारणा वाढवते.",
+        "फळांचा आकार, चमक, साखर आणि वजन वाढवते."
+      ],
+      specification: "Concentrated Botanical & Marine Seaweed Extract Liquid.",
+      usage: "Spray during pre-flowering and fruit development stages.",
+      dosage: "1.5 - 2 ml per litre of water.",
+      application_method: "Foliar Spray",
+      precautions: "Shake well before use. Compatible with common agrochemicals except strong alkaline sprays.",
+      created_at: new Date().toISOString()
+    },
+    {
+      id: "kriv-vasundhara",
+      slug: "kriv-vasundhara",
+      brand_name: "KRIV - VASUNDHARA",
+      category: "organic",
+      category_display: "Organic Manure & PROM",
+      category_display_mr: "सेंद्रिय खते आणि पीआरओएम",
+      manufacturer: "Krivan Industries Pvt. Ltd.",
+      subtitle: "Organic Manure",
+      subtitle_mr: "उच्च दर्जाचे सेंद्रिय खत",
+      isFlagship: false,
+      packing: "40 kg",
+      target_crops: "All Agricultural, Horticultural and Plantation Crops",
+      target_crops_mr: "सर्व पिके, फळबागा व भाजीपाला",
+      shortDesc: "High-grade organic manure formulated to enrich soil texture, eliminate harmful contaminants, and boost crop immunity naturally.",
+      shortDesc_mr: "मातीचा पोत सुधारणारे, सेंद्रिय कर्ब वाढवणारे आणि पिकांची नैसर्गिक प्रतिकारशक्ती वाढवणारे सेंद्रिय खत.",
+      main_picture: "/assets/images/products/kriv-vasundhara-organic-manure.png",
+      youtube_link: "",
+      composition: [
+        { label: "Nitrogen (N)", value: "0.5%" },
+        { label: "Phosphorus (P)", value: "0.5%" },
+        { label: "Potassium (K)", value: "0.5%" },
+        { label: "Organic Carbon", value: "14%" },
+        { label: "C:N Ratio", value: "< 20" },
+        { label: "pH Range", value: "6.5 - 7.5" }
+      ],
+      benefits: [
+        "Helps in eliminating unwanted and harmful soil contamination.",
+        "Enhances organic carbon content and microbial activity.",
+        "Improves soil water-holding capacity and aeration.",
+        "Supplies balanced macro and micro-nutrients sustainably."
+      ],
+      benefits_mr: [
+        "मातीतील सेंद्रिय कर्ब वाढवून सुपीकता टिकवून ठेवते.",
+        "जमिनीतील उपयुक्त जिवाणूंची संख्या वाढवते.",
+        "पाणी धरून ठेवण्याची क्षमता व हवा खेळती ठेवते."
+      ],
+      specification: "Enriched Organic Manure as per FCO specifications.",
+      usage: "Apply at the time of basal dose or before sowing/planting.",
+      dosage: "100 - 200 kg per acre depending on soil fertility.",
+      application_method: "Soil Application / Broadcasting",
+      precautions: "Store under shade. Mix well with soil during preparation.",
+      created_at: new Date().toISOString()
+    },
+    {
+      id: "kriv-natura",
+      slug: "kriv-natura",
+      brand_name: "KRIV - NATURA",
+      category: "organic",
+      category_display: "Organic Manure & PROM",
+      category_display_mr: "सेंद्रिय खते आणि पीआरओएम",
+      manufacturer: "Krivan Industries Pvt. Ltd.",
+      subtitle: "Enriched Bio-Organic Soil Conditioner",
+      subtitle_mr: "बायो-ऑरगॅनिक सॉइल कंडिशनर",
+      isFlagship: false,
+      packing: "50 kg",
+      target_crops: "Sugarcane, Cotton, Soybean, Onion & Fruit orchards",
+      target_crops_mr: "ऊस, कापूस, सोयाबीन, कांदा आणि फळबागा",
+      shortDesc: "Premium fermented organic soil revitalizer packed with humic substances and beneficial soil biology.",
+      shortDesc_mr: "ह्युमिक घटक आणि उपयुक्त सूक्ष्मजीवांनी समृद्ध सेंद्रिय खत.",
+      main_picture: "/assets/images/products/kriv-natura-soil-conditioner.png",
+      youtube_link: "",
+      composition: [
+        { label: "Organic Matter", value: "> 40%" },
+        { label: "Total NPK", value: "3.5% minimum" },
+        { label: "Moisture", value: "15 - 20%" }
+      ],
+      benefits: [
+        "Rapidly rehabilitates tired, chemically depleted farm soils.",
+        "Develops robust, deep root network.",
+        "Increases fertilizer uptake efficiency by over 30%."
+      ],
+      benefits_mr: [
+        "जमिनीची सुपीकता पुनर्स्थापित करते.",
+        "मुळांची निरोगी वाढ घडवून आणते.",
+        "खतांची शोषण क्षमता ३०% पर्यंत वाढवते."
+      ],
+      specification: "Bio-active conditioned organic manure.",
+      usage: "Basal dressing or top dressing along rows.",
+      dosage: "50 - 100 kg per acre.",
+      application_method: "Soil incorporation",
+      precautions: "Ensure adequate moisture in soil after application.",
+      created_at: new Date().toISOString()
+    },
+    {
+      id: "kriv-mruda",
+      slug: "kriv-mruda",
+      brand_name: "KRIV - MRUDA",
+      category: "potash",
+      category_display: "Potash & Plant Boosters",
+      category_display_mr: "पोटॅश आणि वनस्पती वर्धक",
+      manufacturer: "Krivan Industries Pvt. Ltd.",
+      subtitle: "Diatomite Silicon Soil Amender",
+      subtitle_mr: "डायटोमाईट सिलिकॉन सॉइल अमेंडर",
+      isFlagship: false,
+      packing: "25 kg, 50 kg",
+      target_crops: "Paddy, Sugarcane, Wheat, Vegetables & Banana",
+      target_crops_mr: "भात, ऊस, गहू, भाजीपाला व केळी",
+      shortDesc: "Natural diatomite silicon granules that provide structural strength to plant stems, protecting against pests, fungi, and lodging.",
+      shortDesc_mr: "पिकाच्या खोडाला मजबुती देणारे, कीड-रोगांपासून संरक्षण करणारे नैसर्गिक सिलिकॉन ग्रॅन्युल्स.",
+      main_picture: "/assets/images/products/kriv-mruda-silicon.png",
+      youtube_link: "",
+      composition: [
+        { label: "Plant Available Silicon (SiO2)", value: "65.0% (Min)" },
+        { label: "Calcium (Ca)", value: "2.0%" },
+        { label: "Magnesium (Mg)", value: "1.5%" }
+      ],
+      benefits: [
+        "Strengthens stems, preventing crop lodging in heavy winds.",
+        "Creates a natural physical barrier against chewing pests and fungal hyphae.",
+        "Reduces transpiration water loss during hot summer days."
+      ],
+      benefits_mr: [
+        "पिकाचे खोड मजबूत करून पिके लोळण्यापासून वाचवते.",
+        "रोग आणि किडींच्या हल्ल्याविरुद्ध नैसर्गिक ढाल तयार करते.",
+        "उन्हाळ्यात पाण्याचा ताण सहन करण्यास मदत करते."
+      ],
+      specification: "High-grade amorphus diatomaceous silicon granules.",
+      usage: "Basal soil application.",
+      dosage: "25 kg per acre.",
+      application_method: "Broadcast with basal fertilizer",
+      precautions: "Store in moisture-free storage.",
+      created_at: new Date().toISOString()
+    }
+  ],
+  contacts: [
+    {
+      id: "1",
+      full_name: "Suresh Patil",
+      email: "suresh.patil@example.com",
+      phone_number: "+91 98220 11223",
+      product_id: "kaizen-k",
+      product_name: "KAIZEN - K",
+      address: "Nashik, Maharashtra",
+      message: "Interested in dealership for Nashik district.",
+      created_at: new Date(Date.now() - 86400000).toISOString()
+    }
+  ],
+  blogs: [
+    {
+      id: "blog-1",
+      slug: "importance-of-potash-in-grapes",
+      title: "Maximizing Grape Quality and Sugar Content (Brix) with Bio-Available Potash",
+      title_mr: "बायो-पोटॅशच्या सहाय्याने द्राक्षांची गुणवत्ता व साखरेचे प्रमाण (Brix) वाढवा",
+      category: "Crop Nutrition",
+      date: "May 15, 2026",
+      readTime: "4 min read",
+      image: "/assets/images/results/grapes-yield.jpg",
+      summary: "Understand the pivotal role of natural marine-derived potash in fruit elongation, uniform berry development, and shelf-life extension."
+    },
+    {
+      id: "blog-2",
+      slug: "silicon-soil-health-benefits",
+      title: "Why Silicon is the Unsung Superhero of Plant Immunity and Pest Resistance",
+      title_mr: "पिकांची रोगप्रतिकारशक्ती आणि कीड संरक्षणात सिलिकॉनचे महत्त्व",
+      category: "Soil Science",
+      date: "April 28, 2026",
+      readTime: "5 min read",
+      image: "/assets/images/banners/banner-field.jpg",
+      summary: "Explore how diatomite amorphus silicon strengthens cell walls and cuts chemical pesticide dependency."
+    }
+  ],
+  crop_calculators: [
+    {
+      id: "crop-grapes",
+      crop_key: "grapes",
+      name: "Grapes (द्राक्षे)",
+      name_mr: "द्राक्षे (Grapes)",
+      product: "KAIZEN - K (Potash) + THALASSA",
+      stage: "Berry Elongation & Sizing Stage",
+      stage_mr: "मणी वाढ व फुगवण अवस्था",
+      dosage_per_acre: "150 gm Kaizen-K in 200L water + 500 ml Thalassa",
+      unit_factor: 150,
+      unit_label: "gm Kaizen-K",
+      unit2_factor: 500,
+      unit2_label: "ml Thalassa",
+      water_factor: 200,
+      benefits: "+2.5 Brix sugar increase, zero shot berries, uniform cluster weight",
+      benefits_mr: "+२.५ ब्रिक्स साखर वाढ, एकसमान मणी फुगवण, उत्तम वजन",
+      yield_boost: "+28% Export Grade Yield",
+      yield_boost_mr: "+२८% दर्जेदार निर्यातक्षम उत्पादन"
+    },
+    {
+      id: "crop-sugarcane",
+      crop_key: "sugarcane",
+      name: "Sugarcane (ऊस)",
+      name_mr: "ऊस (Sugarcane)",
+      product: "KRIV - MRUDA (Silicon) + VASUNDHARA",
+      stage: "Basal Dose & Earthing Up",
+      stage_mr: "मोठी बांधणी व बेसल डोस",
+      dosage_per_acre: "25 kg Kriv Mruda + 100 kg Kriv Vasundhara",
+      unit_factor: 25,
+      unit_label: "kg Kriv Mruda",
+      unit2_factor: 100,
+      unit2_label: "kg Kriv Vasundhara",
+      water_factor: 0,
+      benefits: "Thick inter-nodal distance, lodging prevention in heavy winds, higher sugar recovery",
+      benefits_mr: "कांड्यांची जाडी, वादळात ऊस लोळण्यापासून संरक्षण, साखर उतारा वाढ",
+      yield_boost: "+12 to 15 Ton / Acre Jump",
+      yield_boost_mr: "+१२ ते १५ टन एकरी वाढ"
+    },
+    {
+      id: "crop-pomegranate",
+      crop_key: "pomegranate",
+      name: "Pomegranate (डाळिंब)",
+      name_mr: "डाळिंब (Pomegranate)",
+      product: "KAIZEN - K + KRIV MRUDA",
+      stage: "Pre-Flowering & Fruit Growth",
+      stage_mr: "कळी निघणे व फळ विकास अवस्था",
+      dosage_per_acre: "200 gm Kaizen-K foliar + 25 kg Silicon broadcast",
+      unit_factor: 200,
+      unit_label: "gm Kaizen-K",
+      unit2_factor: 25,
+      unit2_label: "kg Kriv Mruda",
+      water_factor: 200,
+      benefits: "Thick fruit rind, deep ruby red arils, zero bacterial blight cracking",
+      benefits_mr: "फळाची जाड साल, गडद लाल दाणे, तेलकट व फळ तडकणे रोखते",
+      yield_boost: "+32% Premium Market Grade",
+      yield_boost_mr: "+३२% सुपर मार्केट ग्रेड फळे"
+    },
+    {
+      id: "crop-cotton",
+      crop_key: "cotton",
+      name: "Cotton (कापूस)",
+      name_mr: "कापूस (Cotton)",
+      product: "KRIV - NATURA + THALASSA",
+      stage: "Square Formation & Boll Development",
+      stage_mr: "पाती लागणे व बोंड विकास अवस्था",
+      dosage_per_acre: "50 kg Kriv Natura + 250 ml Thalassa spray",
+      unit_factor: 50,
+      unit_label: "kg Kriv Natura",
+      unit2_factor: 250,
+      unit2_label: "ml Thalassa",
+      water_factor: 150,
+      benefits: "Stops square & boll dropping under thermal stress, increases staple length",
+      benefits_mr: "उष्णतेमुळे होणारी पातेगळ थांबवून बोंडांचे वजन व धाग्याची लांबी वाढवते",
+      yield_boost: "+4 to 6 Quintals / Acre",
+      yield_boost_mr: "+४ ते ६ क्विंटल एकरी वाढ"
+    },
+    {
+      id: "crop-vegetables",
+      crop_key: "vegetables",
+      name: "Tomato & Vegetables (टोमॅटो व भाजीपाला)",
+      name_mr: "टोमॅटो व भाजीपाला (Tomato & Veggies)",
+      product: "THALASSA + KAIZEN - K",
+      stage: "Flowering & Continuous Harvesting",
+      stage_mr: "फुलधारणा व सतत तोडणी अवस्था",
+      dosage_per_acre: "400 ml Thalassa + 200 gm Kaizen-K in 200L water",
+      unit_factor: 200,
+      unit_label: "gm Kaizen-K",
+      unit2_factor: 400,
+      unit2_label: "ml Thalassa",
+      water_factor: 200,
+      benefits: "Profuse flowering, shiny skin, longer shelf-life during transport",
+      benefits_mr: "भरघोस फुलधारणा, फळांना आकर्षक चकाकी, टिकवण क्षमता वाढ",
+      yield_boost: "+35% Marketable Yield",
+      yield_boost_mr: "+३५% उत्पादन वाढ"
+    },
+    {
+      id: "crop-banana",
+      crop_key: "banana",
+      name: "Banana (केळी)",
+      name_mr: "केळी (Banana)",
+      product: "KAIZEN - K + KRIV - MRUDA",
+      stage: "Bunch Emergence & Finger Filling",
+      stage_mr: "कमळ निघणे व घड भरणे अवस्था",
+      dosage_per_acre: "500 gm Kaizen-K Drip + 50 kg Kriv Mruda",
+      unit_factor: 500,
+      unit_label: "gm Kaizen-K (Drip)",
+      unit2_factor: 50,
+      unit2_label: "kg Kriv Mruda",
+      water_factor: 0,
+      benefits: "Uniform fingers, prevents finger dropping, increases heavy bunch weight",
+      benefits_mr: "घडाचे एकसमान वजन, केळीची जाडी व लांबी वाढ, उत्तम बाजारभाव",
+      yield_boost: "+4 to 5 kg Bunch Weight Jump",
+      yield_boost_mr: "+४ ते ५ किलो घडाचे सरासरी वजन वाढ"
+    },
+    {
+      id: "crop-onion",
+      crop_key: "onion",
+      name: "Onion & Garlic (कांदा व लसूण)",
+      name_mr: "कांदा व लसूण (Onion & Garlic)",
+      product: "KAIZEN - K + KRIV VASUNDHARA",
+      stage: "Bulb Development & Maturity",
+      stage_mr: "कांदा पोसणे व पक्वता अवस्था",
+      dosage_per_acre: "200 gm Kaizen-K spray + 100 kg Vasundhara",
+      unit_factor: 200,
+      unit_label: "gm Kaizen-K",
+      unit2_factor: 100,
+      unit2_label: "kg Kriv Vasundhara",
+      water_factor: 200,
+      benefits: "Thick onion scales, uniform bulb size, zero rot in storage",
+      benefits_mr: "कांद्याचा चमकदार लाल रंग, आकर्षक पत्ती, चाळीत जास्त दिवस टिकवण क्षमता",
+      yield_boost: "+25% Export Grade Bulbs",
+      yield_boost_mr: "+२५% निर्यातक्षम मोठे कांदे"
+    }
+  ]
+};
+
+// Database helper functions
+export const db = {
+  read: () => {
+    if (!fs.existsSync(DB_FILE)) {
+      fs.writeFileSync(DB_FILE, JSON.stringify(initialData, null, 2), 'utf-8');
+      return initialData;
+    }
+    try {
+      const content = fs.readFileSync(DB_FILE, 'utf-8');
+      return JSON.parse(content);
+    } catch (e) {
+      console.error('Error reading DB, resetting to initialData', e);
+      return initialData;
+    }
+  },
+  write: (data) => {
+    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  }
+};

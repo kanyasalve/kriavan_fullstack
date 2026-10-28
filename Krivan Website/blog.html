@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agro News, Soil Management Articles & Farming Knowledge Hub | Krivan Industries Pvt. Ltd.">
+  <meta name="keywords" content="Agro news, agriculture blog, soil health, bio-potash, organic manure news, Krivan Industries blog">
+  <title>Agro News & Articles | Krivan Industries Pvt. Ltd.</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Top Info Bar -->
+  <div class="top-bar d-none d-md-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <span class="me-3"><i class="bi bi-geo-alt me-1 text-success"></i> Krivan Industries Pvt. Ltd., India</span>
+        <span><i class="bi bi-clock me-1 text-success"></i> Mon - Sat: 9:00 AM - 6:00 PM</span>
+      </div>
+      <div>
+        <a href="contact.html" class="me-3"><i class="bi bi-envelope me-1"></i> Contact Us</a>
+        <a href="tel:+910000000000"><i class="bi bi-telephone me-1"></i> Call Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Responsive Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-krivan">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-krivan" href="index.html">
+        <img src="assets/images/company/krivan-logo.png" alt="Krivan Logo" class="d-inline-block align-text-top">
+        <span>Krivan <span class="text-success fs-6 fw-normal">Industries</span></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#krivanNav" aria-controls="krivanNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="krivanNav">
+        <ul class="navbar-nav ms-auto me-3 mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-link-krivan" href="index.html" data-i18n="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-krivan" href="about.html" data-i18n="about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-krivan" href="products.html" data-i18n="products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-krivan active" href="blog.html" data-i18n="blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-krivan" href="gallery.html" data-i18n="gallery">Gallery</a>
+          </li>
+        </ul>
+        
+        <!-- Language Switcher (EN / Marathi) -->
+        <div class="lang-switcher me-2">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="mr">मराठी</button>
+        </div>
+
+        <a href="contact.html" class="btn btn-krivan btn-krivan-primary">
+          <span data-i18n="enquireNow">Enquire Now</span> <i class="bi bi-arrow-right-short"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header Banner -->
+  <section class="page-banner bg-surface text-center py-5 border-bottom position-relative">
+    <div class="container reveal-on-scroll">
+      <div class="badge bg-success-subtle text-success border border-success mb-2 px-3 py-1 rounded-pill" data-i18n="agroBlog">
+        <i class="bi bi-journal-richtext me-1"></i> Agro News & Articles
+      </div>
+      <h1 class="fw-bold display-5 text-dark mb-2" data-i18n="agroBlog">Agro News & Knowledge Hub</h1>
+      <p class="lead text-muted mx-auto" style="max-width: 700px;" data-i18n="top3NewsSub">
+        Stay informed with top agricultural updates, soil management insights, and product research.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Blog & Search Section -->
+  <section class="section-padding bg-light">
+    <div class="container">
+      
+      <!-- Category & Search Bar -->
+      <div class="row align-items-center mb-4 g-3">
+        <div class="col-lg-7">
+          <div class="d-flex flex-wrap gap-2" id="blogCategoryPills">
+            <button class="btn btn-success rounded-pill px-3 py-2 btn-sm blog-cat-btn active" data-cat="all" data-i18n="allBlogCategories">All Categories</button>
+            <button class="btn btn-outline-success rounded-pill px-3 py-2 btn-sm blog-cat-btn" data-cat="catSoilHealth" data-i18n="catSoilHealth">Soil Health</button>
+            <button class="btn btn-outline-success rounded-pill px-3 py-2 btn-sm blog-cat-btn" data-cat="catCropCare" data-i18n="catCropCare">Crop Care</button>
+            <button class="btn btn-outline-success rounded-pill px-3 py-2 btn-sm blog-cat-btn" data-cat="catPotashTech" data-i18n="catPotashTech">Potash & Nutrients</button>
+            <button class="btn btn-outline-success rounded-pill px-3 py-2 btn-sm blog-cat-btn" data-cat="catMarketTrends" data-i18n="catMarketTrends">Agro Market Updates</button>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="d-flex gap-2">
+            <div class="input-group shadow-sm rounded-pill overflow-hidden bg-white border flex-grow-1">
+              <span class="input-group-text bg-white border-0 ps-3 text-muted"><i class="bi bi-search"></i></span>
+              <input type="text" class="form-control border-0 py-2" id="blogSearchInput" placeholder="Search Agro News..." data-i18n="searchAgroNews">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Date Calendar Filter Bar -->
+      <div class="bg-white p-3 rounded-4 shadow-sm border mb-4 d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-calendar3-range text-success fs-5"></i>
+          <span class="fw-bold text-dark me-2">Article Date Calendar:</span>
+          <input type="date" id="blogCalendarPicker" class="form-control form-control-sm rounded-pill px-3" style="max-width: 200px;">
+          <button id="clearDateBtn" class="btn btn-outline-secondary btn-sm rounded-pill px-3 d-none">
+            <i class="bi bi-x-circle me-1"></i> Show All Dates
+          </button>
+        </div>
+        <div class="text-muted small">
+          <i class="bi bi-info-circle me-1 text-success"></i> Pick a date from the calendar to find published articles.
+        </div>
+      </div>
+
+      <!-- Layout Grid: Left News Cards Grid (col-lg-8) + Right Sidebar Calendar & Newsletter (col-lg-4) -->
+      <div class="row g-4">
+        
+        <!-- Left Side: News Cards (Background Image, Title, Description, Writer, Source) -->
+        <div class="col-lg-8">
+          <div class="row g-4" id="krivanBlogGrid">
+            <!-- News boxes rendered dynamically via js/blog.js -->
+          </div>
+        </div>
+
+        <!-- Right Side: Mini Calendar Widget & Newsletter Empty Boxes -->
+        <div class="col-lg-4">
+          
+          <!-- Interactive Mini Calendar Widget -->
+          <div class="mini-calendar-widget mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h6 class="fw-bold text-dark mb-0"><i class="bi bi-calendar-date text-success me-2"></i>News Calendar</h6>
+              <span class="badge bg-success-subtle text-success border border-success" id="miniCalendarMonthYear">Sept 2026</span>
+            </div>
+            <div class="calendar-grid mb-2">
+              <div class="calendar-day-header">S</div>
+              <div class="calendar-day-header">M</div>
+              <div class="calendar-day-header">T</div>
+              <div class="calendar-day-header">W</div>
+              <div class="calendar-day-header">T</div>
+              <div class="calendar-day-header">F</div>
+              <div class="calendar-day-header">S</div>
+            </div>
+            <div class="calendar-grid" id="miniCalendarDays">
+              <!-- Mini calendar day cells generated dynamically -->
+            </div>
+            <div class="mt-3 pt-2 border-top d-flex align-items-center justify-content-between text-muted small">
+              <span><span class="badge bg-success p-1 rounded-circle me-1"></span> Article Published</span>
+              <button class="btn btn-link btn-sm p-0 text-decoration-none text-success" id="resetCalendarFilterBtn">View All</button>
+            </div>
+          </div>
+
+          <!-- Newsletter Section with Empty Boxes -->
+          <div class="newsletter-card">
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <i class="bi bi-envelope-open-heart text-success fs-4"></i>
+              <div>
+                <h6 class="fw-bold text-dark mb-0">Agro Newsletter</h6>
+                <p class="text-muted small mb-0">Subscribe for weekly soil & crop updates.</p>
+              </div>
+            </div>
+
+            <!-- Email Subscribe Box -->
+            <form id="blogNewsletterForm" class="mb-4">
+              <div class="input-group mb-2">
+                <input type="email" class="form-control form-control-sm" placeholder="Enter farmer / dealer email" required>
+                <button class="btn btn-krivan btn-krivan-primary btn-sm" type="submit">Subscribe</button>
+              </div>
+              <div class="form-text text-success d-none" id="newsletterSuccessMsg">
+                <i class="bi bi-check-circle me-1"></i> Subscribed successfully!
+              </div>
+            </form>
+
+            <h6 class="fw-bold text-dark small text-uppercase letter-spacing-1 mb-3">Upcoming Newsletter Slots</h6>
+
+            <!-- Empty Newsletter Slot 1 -->
+            <div class="newsletter-empty-slot mb-3">
+              <div class="d-flex align-items-center justify-content-between mb-1">
+                <span class="badge bg-secondary">Draft Slot #1</span>
+                <span class="text-muted small">Oct 2026</span>
+              </div>
+              <h6 class="fw-semibold text-secondary mb-1">Weekly Soil Health Bulletin</h6>
+              <p class="small text-muted mb-0">Empty slot reserved for upcoming organic fertilizer application schedule.</p>
+            </div>
+
+            <!-- Empty Newsletter Slot 2 -->
+            <div class="newsletter-empty-slot mb-3">
+              <div class="d-flex align-items-center justify-content-between mb-1">
+                <span class="badge bg-secondary">Draft Slot #2</span>
+                <span class="text-muted small">Nov 2026</span>
+              </div>
+              <h6 class="fw-semibold text-secondary mb-1">Rabi Crop Advisory & Potash Guidance</h6>
+              <p class="small text-muted mb-0">Empty slot reserved for Rabi season crop nutrition updates.</p>
+            </div>
+
+            <!-- Empty Newsletter Slot 3 -->
+            <div class="newsletter-empty-slot">
+              <div class="d-flex align-items-center justify-content-between mb-1">
+                <span class="badge bg-warning text-dark">Govt Policy Slot</span>
+                <span class="text-muted small">Dec 2026</span>
+              </div>
+              <h6 class="fw-semibold text-secondary mb-1">Fertilizer Subsidy & Market Prices</h6>
+              <p class="small text-muted mb-0">Empty newsletter space reserved for government agricultural subsidy news.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Quick Inquiry CTA Banner -->
+  <section class="section-padding bg-dark-custom text-white text-center">
+    <div class="container reveal-on-scroll">
+      <div class="badge bg-success mb-3 px-3 py-2 rounded-pill">Agricultural Advice</div>
+      <h2 class="text-white mb-3">Want Expert Guidance for Your Crop & Soil?</h2>
+      <p class="text-light lead mx-auto mb-4" style="max-width: 650px;">
+        Contact our agricultural specialists to choose the right bio-potash and organic manure formulation for your soil type.
+      </p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="contact.html" class="btn btn-krivan btn-krivan-secondary btn-lg">Send An Enquiry</a>
+        <a href="tel:+910000000000" class="btn btn-krivan btn-krivan-light btn-lg"><i class="bi bi-telephone"></i> Call Us Directly</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-krivan">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand-title">Krivan Industries Pvt. Ltd.</div>
+          <p class="small text-light mb-3">
+            Nourishing Soil. Growing Tomorrow. Premier manufacturer of quality organic manures, potash derived from molasses, PROM, silicon granules, and agricultural nutrients.
+          </p>
+          <div class="d-flex gap-2">
+            <span class="badge bg-success"><i class="bi bi-shield-check"></i> Verified Product Line</span>
+            <span class="badge bg-secondary"><i class="bi bi-geo-alt"></i> India</span>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products Catalog</a></li>
+            <li><a href="blog.html">Agro Blog</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Flagship Products</h5>
+          <ul class="footer-links">
+            <li><a href="product-details.html?id=kaizen-k">KAIZEN - K (Flagship)</a></li>
+            <li><a href="product-details.html?id=thalassa">THALASSA Booster</a></li>
+            <li><a href="product-details.html?id=kriv-vasundhara">KRIV - VASUNDHARA</a></li>
+            <li><a href="product-details.html?id=kriv-natura">KRIV - NATURA</a></li>
+            <li><a href="product-details.html?id=kriv-mruda">KRIV - MRUDA (PROM)</a></li>
+            <li><a href="product-details.html?id=kriv-silica">KRIV - SILICA</a></li>
+            <li><a href="product-details.html?id=kriv-luster">KRIV - LUSTER</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Contact Info</h5>
+          <p class="small text-light mb-2"><i class="bi bi-building me-2 text-success"></i> Krivan Industries Pvt. Ltd.</p>
+          <p class="small text-light mb-2"><i class="bi bi-telephone me-2 text-success"></i> Contact us for information</p>
+          <p class="small text-light mb-2"><i class="bi bi-envelope me-2 text-success"></i> Contact us for inquiries</p>
+          <p class="small text-light mb-0"><i class="bi bi-clock me-2 text-success"></i> Mon - Sat: 9:00 AM - 6:00 PM</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center">
+        <p class="mb-0">© 2026 Krivan Industries Pvt. Ltd. <span data-i18n="rightsReserved">All Rights Reserved.</span> Designed for Farmers & Dealers.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp CTA -->
+  <a href="https://wa.me/?text=Hello%20Krivan%20Industries,%20I%20would%20like%20to%20enquire%20about%20your%20fertilizer%20products." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!-- Back to Top Button -->
+  <button id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="js/language.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/blog.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

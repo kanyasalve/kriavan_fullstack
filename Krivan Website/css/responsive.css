@@ -1,0 +1,157 @@
+/* ==========================================================================
+   KRIVAN INDUSTRIES PVT. LTD. - Responsive Layout Stylesheet
+   Adapts for Desktop, Laptop, Tablet, Mobile (1920px down to 320px)
+   ========================================================================== */
+
+/* Extra Large Screens & Televisions (1400px and up) */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* Laptops & Standard Desktop (992px to 1199.98px) */
+@media (max-width: 1199.98px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-lead {
+    font-size: 1.15rem;
+  }
+  
+  .section-title {
+    font-size: 2.25rem;
+  }
+  
+  .product-detail-img {
+    max-height: 350px;
+  }
+}
+
+/* Tablets & Medium Screens (768px to 991.98px) */
+@media (max-width: 991.98px) {
+  .section-padding {
+    padding: 3.5rem 0;
+  }
+
+  .navbar-krivan {
+    padding: 0.6rem 0;
+  }
+
+  .hero-wrapper {
+    min-height: auto;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+    text-align: center;
+  }
+
+  .hero-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-3d-card {
+    margin-top: 2.5rem;
+  }
+
+  .stats-bar {
+    margin-top: 2rem;
+  }
+
+  .stat-item {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .stat-item:last-child {
+    border-bottom: none;
+  }
+
+  .contact-info-card {
+    margin-bottom: 2rem;
+  }
+  
+  .spec-table th, .spec-table td {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Small Mobile & Smart Phones (576px and down) */
+@media (max-width: 575.98px) {
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .hero-title {
+    font-size: 2.15rem;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.85rem;
+  }
+
+  .btn-krivan {
+    width: 100%;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .product-card-img-wrapper {
+    min-height: 220px;
+    padding: 3.25rem 1rem 1.25rem 1rem;
+  }
+
+  .product-card-img {
+    max-height: 150px;
+  }
+
+  .product-detail-img-box {
+    padding: 1.5rem 1rem;
+  }
+
+  .product-detail-img {
+    max-height: 260px;
+  }
+
+  .filter-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .back-to-top {
+    width: 40px;
+    height: 40px;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .contact-form-card {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* Touch & Mobile UX Fixes */
+@media (hover: none) {
+  .hero-3d-card:hover,
+  .product-card:hover,
+  .feature-card:hover {
+    transform: none !important;
+  }
+}

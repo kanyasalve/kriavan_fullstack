@@ -1,0 +1,137 @@
+/* ==========================================================================
+   KRIVAN INDUSTRIES PVT. LTD. - Animations & 3D Effects
+   CSS Keyframes, Smooth Transitions, and Micro-interactions
+   ========================================================================== */
+
+/* 1. Floating Particle / Agricultural Leaf Movement */
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-float {
+  animation: floatParticle 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatParticle 5s ease-in-out 1.5s infinite;
+}
+
+/* 2. Soft Pulse for Badges and CTAs */
+@keyframes softPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.pulse-badge {
+  animation: softPulse 2.5s infinite;
+}
+
+/* 3. Subtle 3D Card Perspective Utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.tilt-3d {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+.tilt-3d:hover {
+  transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateZ(10px);
+}
+
+/* 4. IntersectionObserver Scroll Reveal Classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.15s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.3s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.45s;
+}
+
+/* 5. Ripple Button Effect */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn-ripple:focus:not(:active)::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(40, 40);
+    opacity: 0;
+  }
+}
+
+/* 6. Accessibility - Disable heavy animations for users with motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .tilt-3d:hover {
+    transform: none !important;
+  }
+}
