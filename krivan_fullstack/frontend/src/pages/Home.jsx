@@ -879,7 +879,9 @@ const Home = () => {
                   <h3 style={{ fontSize: '1.15rem', marginBottom: '0.35rem', color: '#1c1917' }}>Scan with Phone Camera</h3>
                   <p style={{ fontSize: '0.82rem', color: '#78716c', marginBottom: '1rem' }}>Instant product verification & dosage guide</p>
                   <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=http://localhost:5173/product/kaizen-k&color=63-98-18"
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(
+                      `${typeof window !== 'undefined' && !window.location.host.includes('localhost') ? window.location.origin : (import.meta.env.VITE_API_URL || 'https://krivan-fullstack.onrender.com')}/product/kaizen-k`
+                    )}&color=63-98-18`}
                     alt="Sample QR Code"
                     className="qr-code-img"
                   />

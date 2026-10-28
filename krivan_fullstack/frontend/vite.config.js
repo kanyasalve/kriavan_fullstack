@@ -1,24 +1,29 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 5173,
-    proxy: {
-      '/api': {
-        target: 'https://kriavan-fullstack.onrender.com',
-        changeOrigin: true
-      },
-      '/assets': {
-        target: 'https://kriavan-fullstack.onrender.com',
-        changeOrigin: true
-      },
-      '/uploads': {
-        target: 'https://kriavan-fullstack.onrender.com',
-        changeOrigin: true
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  const backendTarget = env.VITE_API_URL || 'https://krivan-fullstack.onrender.com';
+
+  return {
+    plugins: [react()],
+    server: {
+      port: 5173,
+      proxy: {
+        '/api': {
+          target: backendTarget,
+          changeOrigin: true
+        },
+        '/assets': {
+          target: backendTarget,
+          changeOrigin: true
+        },
+        '/uploads': {
+          target: backendTarget,
+          changeOrigin: true
+        }
       }
     }
-  }
+  };
 });

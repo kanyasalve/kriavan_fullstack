@@ -715,6 +715,10 @@ const AdminDashboard = () => {
     const cleanPhone = rawPhone.length === 10 ? `91${rawPhone}` : rawPhone;
     const itemsText = inv.items?.map(it => `• ${it.product_name} (${it.quantity} ${it.unit}) - ₹${Number(it.amount || 0).toLocaleString()}`).join('\n') || '';
 
+    const publicUrl = typeof window !== 'undefined' && window.location.origin && !window.location.origin.includes('localhost')
+      ? window.location.origin
+      : (import.meta.env.VITE_API_URL || 'https://krivan-fullstack.onrender.com');
+
     const message = `🧾 *KRIVAN INDUSTRIES PVT. LTD.* 🧾\n*OFFICIAL TAX INVOICE*\n\n` +
       `👤 *Customer Name:* ${inv.customer_name}\n` +
       `📄 *Invoice No:* ${inv.invoice_no}\n` +
@@ -725,7 +729,7 @@ const AdminDashboard = () => {
       `📊 *GST Tax (${inv.tax_rate || 5}%):* ₹${Number(inv.tax_amount || 0).toLocaleString()}\n` +
       `💵 *TOTAL AMOUNT:* ₹${Number(inv.total_price || 0).toLocaleString()}\n` +
       `🟢 *Payment Status:* ${inv.payment_status} (${inv.payment_mode || 'Online'})\n\n` +
-      `🌐 *Scan Smart QR & Dosage:* http://localhost:5173\n` +
+      `🌐 *Scan Smart QR & Dosage:* ${publicUrl}\n` +
       `📞 *Customer Care:* +91 98765 43210\n\n` +
       `_धन्यवाद! क्रिव्हन सेंद्रिय खतांचा वापर करून भरघोस पीक मिळवा._`;
 
