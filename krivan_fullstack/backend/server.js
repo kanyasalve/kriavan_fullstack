@@ -1192,6 +1192,153 @@ app.delete('/api/crop-calculator/:id', (req, res) => {
   }
 });
 
+/* ==========================================================================
+   📦 PRODUCT CATEGORIES API
+   ========================================================================== */
+
+// 1. Get all categories
+app.get('/api/categories', (req, res) => {
+  try {
+    const data = db.read();
+    if (!data.categories || data.categories.length === 0) {
+      data.categories = [
+        {
+          id: "potash",
+          slug: "potash",
+          name: "Potash & Plant Boosters",
+          name_mr: "पोटॅश आणि वनस्पती वर्धक",
+          icon: "🌱",
+          color: "#16a34a",
+          description: "Bio-available potash formulations derived from rhodophytes.",
+          created_at: new Date().toISOString()
+        },
+        {
+          id: "prom",
+          slug: "prom",
+          name: "Organic PROM & Soil Enhancers",
+          name_mr: "सेंद्रिय प्रोम व माती सुधारक",
+          icon: "🌾",
+          color: "#65a30d",
+          description: "Phosphate Rich Organic Manure for rapid root establishment.",
+          created_at: new Date().toISOString()
+        },
+        {
+          id: "manure",
+          slug: "manure",
+          name: "Bio-Enriched Organic Manure",
+          name_mr: "सेंद्रिय खते व गांडूळ खत",
+          icon: "🍂",
+          color: "#ca8a04",
+          description: "Fermented organic matter enriched with humic & fulvic acids.",
+          created_at: new Date().toISOString()
+        },
+        {
+          id: "silicon",
+          slug: "silicon",
+          name: "Diatomite Silicon & Soil Conditioners",
+          name_mr: "डायटोमाईट सिलिकॉन",
+          icon: "💎",
+          color: "#0284c7",
+          description: "Natural amorphous diatomite silicon for stem strength.",
+          created_at: new Date().toISOString()
+        },
+        {
+          id: "micronutrients",
+          slug: "micronutrients",
+          name: "Chelated Micronutrients",
+          name_mr: "मायक्रोन्युट्रिएंट्स",
+          icon: "🧪",
+          color: "#9333ea",
+          description: "EDTA chelated zinc, boron, and vital trace minerals.",
+          created_at: new Date().toISOString()
+        }
+      ];
+      db.write(data);
+    }
+    res.json({ success: true, count: data.categories.length, data: data.categories });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// 2. Create new category
+app.post('/api/categories', (req, res) => {
+  try {
+    const data = db.read();
+    if (!data.categories) data.categories = [];
+
+    const { name, name_mr, slug, icon, color, description } = req.body;
+    if (!name) {
+      return res.status(400).json({ success: false, message: 'Category title (English) is required' });
+    }
+
+    const catSlug = slug || slugify(name, { lower: true, strict: true }) || `cat-${Date.now()}`;
+    const id = req.body.id || catSlug;
+
+    // Check if category slug already exists
+    const existingIndex = data.categories.findIndex(c => c.slug === catSlug || c.id === id);
+    if (existingIndex !== -1) {
+      return res.status(400).json({ success: false, message: 'A category with this key / slug already exists' });
+    }
+
+    const newCategory = {
+      id,
+      slug: catSlug,
+      name,
+      name_mr: name_mr || name,
+      icon: icon || '🌿',
+      color: color || '#15803d',
+      description: description || '',
+      created_at: new Date().toISOString()
+    };
+
+    data.categories.push(newCategory);
+    db.write(data);
+
+    res.status(201).json({ success: true, message: 'Category created successfully', data: newCategory });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// 3. Update category
+app.put('/api/categories/:id', (req, res) => {
+  try {
+    const data = db.read();
+    if (!data.categories) data.categories = [];
+
+    const index = data.categories.findIndex(c => String(c.id) === String(req.params.id) || String(c.slug) === String(req.params.id));
+    if (index === -1) {
+      return res.status(404).json({ success: false, message: 'Category not found' });
+    }
+
+    data.categories[index] = {
+      ...data.categories[index],
+      ...req.body,
+      updated_at: new Date().toISOString()
+    };
+
+    db.write(data);
+    res.json({ success: true, message: 'Category updated successfully', data: data.categories[index] });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// 4. Delete category
+app.delete('/api/categories/:id', (req, res) => {
+  try {
+    const data = db.read();
+    if (!data.categories) data.categories = [];
+
+    data.categories = data.categories.filter(c => String(c.id) !== String(req.params.id) && String(c.slug) !== String(req.params.id));
+    db.write(data);
+    res.json({ success: true, message: 'Category deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 // Fallback health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString() });

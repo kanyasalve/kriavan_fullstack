@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base API configuration with environment variable support & production fallback
-export const BASE_URL = import.meta.env.VITE_API_URL || 'https://krivan-fullstack.onrender.com';
+export const BASE_URL = import.meta.env.VITE_API_URL || 'https://kriavan-fullstack.onrender.com';
 export const API_BASE = `${BASE_URL.replace(/\/api\/?$/, '').replace(/\/+$/, '')}/api`;
 
 // Reusable Axios instance with base URL configured
