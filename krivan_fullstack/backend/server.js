@@ -24,8 +24,19 @@ try {
   if (fs.existsSync(srcProduct)) fs.copyFileSync(srcProduct, path.join(destDirProducts, 'kaizen-k-3d.jpg'));
 } catch (e) {}
 
-// Middlewares
-app.use(cors());
+// Middlewares & CORS Configuration (Placed before all route definitions)
+const allowedOrigins = [
+  'https://kriavan-fullstack.vercel.app',
+  'https://krivan-fullstack.vercel.app',
+  /\.vercel\.app$/,
+  'http://localhost:5173',
+  'http://localhost:3000'
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
