@@ -132,7 +132,7 @@ const Home = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: 'url(/assets/images/banners/hero-field-cinematic.jpg)',
+          backgroundImage: 'url(/assets/images/banners/hero-field-cinematic.jpg), url(/assets/images/banners/hero-bg.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.28,

@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import QRCode from 'qrcode';
@@ -22,21 +23,46 @@ try {
   if (!fs.existsSync(destDirProducts)) fs.mkdirSync(destDirProducts, { recursive: true });
   if (fs.existsSync(srcHero)) fs.copyFileSync(srcHero, path.join(destDirBanners, 'hero-field-cinematic.jpg'));
   if (fs.existsSync(srcProduct)) fs.copyFileSync(srcProduct, path.join(destDirProducts, 'kaizen-k-3d.jpg'));
-} catch (e) {}
+} catch (e) {
+  console.error('Asset auto-sync error:', e.message);
+}
 
 // Middlewares & CORS Configuration (Placed before all route definitions)
 const allowedOrigins = [
   'https://kriavan-fullstack.vercel.app',
   'https://krivan-fullstack.vercel.app',
-  /\.vercel\.app$/,
   'http://localhost:5173',
   'http://localhost:3000'
 ];
 
 app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin) || (typeof origin === 'string' && origin.endsWith('.vercel.app'))) {
+      callback(null, true);
+    } else {
+      callback(null, true);
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
+
+// Fallback headers for all responses including 404 / errors
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin && (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app'))) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+  }
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
